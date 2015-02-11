@@ -7,6 +7,7 @@ Ondrej Paska (paskaond)
 
 ### Compilation
 Compile with Apache Ant (build.xml)
+
 * ant - builds project to bin folder
 * ant Main - runs the interpreter  
 * ant test - runs all the tests
@@ -23,7 +24,7 @@ dimacs CNF  (example in sat3_1.dimacs)
 ####Output
 list of variable (those that are false in solution are preceded with '-') or unsatisfiable.
 
-###About solution:
+###About solution
 JavaCC (JJTree) parses input to AST according to a grammer, then it is interpreted.
 I used and modified the JavaCC EcmaScript Grammer from Dojo Foundation:
 Licensed under the Academic Free License version 2.1 or above OR the modified BSD license.
@@ -42,16 +43,15 @@ Accessed from: http://svn.dojotoolkit.org/src/trunk/tools/jslinker/src/org/dojo/
 * Simple IO - readFile, writeFile functions - only string
 
 ### What is different from JavaScript
-	* trace() function to println to standart out
-	* io functions
-	* all properties can be overwritten, including operators +,-,==, etc
-	* Missing: continue, new, exceptions, for in, switch, with, prefix expressions, operators...
+* trace() function to println to standart out
+* io functions
+* all properties can be overwritten, including operators +,-,==, etc
+* Missing: continue, new, exceptions, for in, switch, with, prefix expressions, operators...
 
 
 **More details can be found in test classes**
 
 	
-
 
 
 
