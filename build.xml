@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="JavaJavaScript">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="D:/Tools/eclipse"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="JavaJavaScript.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="test">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <src path="test"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target name="Main">
+        <java classname="cz.fit.cvut.paskaond.jsruntime.Main" failonerror="true" fork="yes">
+            <classpath refid="JavaJavaScript.classpath"/>
+        </java>
+    </target>
+    <target name="ArithmeticTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.ArithmeticTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </junit>
+    </target>
+    <target name="StringTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.StringTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </junit>
+    </target>
+    <target name="FunctionTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.FunctionTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </junit>
+    </target>
+    <target name="ObjectTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.ObjectTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </junit>
+    </target>
+    <target name="FlowControlTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.FlowControlTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </junit>
+    </target>
+    <target name="ArrayTest">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.ArrayTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </junit>
+    </target>
+    <target name="RunSatSolver">
+        <java classname="cz.fit.cvut.paskaond.jsruntime.Main" failonerror="true" fork="yes">
+            <arg line="sat_solver.js sat3_1.dimacs"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </java>
+    </target>
+    <target name="test">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.ArithmeticTest" todir="${junit.output.dir}"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.ArrayTest" todir="${junit.output.dir}"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.FlowControlTest" todir="${junit.output.dir}"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.FunctionTest" todir="${junit.output.dir}"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.ObjectTest" todir="${junit.output.dir}"/>
+            <test name="cz.fit.cvut.paskaond.jsruntime.test.StringTest" todir="${junit.output.dir}"/>
+            <classpath refid="JavaJavaScript.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+  	 <target name="create_run_jar">
+  	        <jar destfile="D:/Documents/EclipseWorkspace/JavaJavaScript/bin-jar/javajavascript.jar">
+  	            <manifest>
+  	                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+  	                <attribute name="Rsrc-Main-Class" value="cz.fit.cvut.paskaond.jsruntime.Main"/>
+  	                <attribute name="Class-Path" value="."/>
+  	                <attribute name="Rsrc-Class-Path" value="./"/>
+  	            </manifest>
+  	            <zipfileset src="jar-in-jar-loader.zip"/>
+  	            <fileset dir="D:/Documents/EclipseWorkspace/JavaJavaScript/bin"/>
+  	        </jar>
+  	    </target>
+</project>
